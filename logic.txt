@@ -1,0 +1,30 @@
+The provided code consists of two separate PHP files: "admincars.php" and "adminaddcar.php." These files are part of a web application that appears to manage a car showroom's inventory. I will explain the connection between these two files and how they interact with the database table.
+
+**1. admincars.php:**
+
+This file displays a list of cars currently available in the showroom. It starts with session handling code to ensure that only authenticated administrators can access this page. The content of this file includes:
+- HTML structure with header, navigation, and footer sections.
+- A table that lists car models, their names, and the number of available cars of each model.
+- PHP code that connects to the database, retrieves car model information from the "model" table, and calculates the number of available cars for each model using data from the "car" table.
+- Display of the table rows using a while loop and the fetched data.
+
+**2. adminaddcar.php:**
+
+This file provides a form for administrators to add new cars to the showroom's inventory. It also starts with session handling code for authentication. The content includes:
+- HTML structure with header, navigation, and footer sections.
+- A form for entering car details, such as car model, chassis number, and color.
+- PHP code that connects to the database and handles the addition of new cars to the "car" table. It retrieves the car model number from the "model" table based on the selected car model name, and then inserts the new car details (chassis number, model number, color) into the "car" table.
+
+**Connection between the Files and Database:**
+
+1. Both files start with the same session handling code to ensure that only authenticated administrators can access the pages. This ensures security and restricts unauthorized access.
+
+2. Both files connect to the same MySQL database using the same connection details: `mysqli_connect("localhost","root","","car_showroom");`
+
+3. The "admincars.php" file retrieves car model information from the "model" table to display the list of available cars.
+
+4. The "adminaddcar.php" file uses a similar approach to retrieve car model information from the "model" table, specifically when a new car is being added. It uses the selected car model name to fetch the corresponding model number from the "model" table.
+
+5. The "adminaddcar.php" file inserts new car details into the "car" table in the database, including the chassis number and color. The model number is obtained from the "model" table, establishing a relationship between the two tables.
+
+In summary, both files are related in that they are part of an admin panel for managing the car showroom's inventory. They share the same session handling, database connection, and interact with the same "model" and "car" tables in the database. "admincars.php" displays available cars, while "adminaddcar.php" allows administrators to add new cars to the inventory.
